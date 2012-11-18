@@ -1,27 +1,26 @@
+(function ($) {
 
-(function($) {
-
-    $.fn.callme = function(options) {
+    $.fn.callme = function (options) {
 
         var thisPhone = this, dispatcher = $({}), callMeOptions = {}, phono, call;
         var settings = {
-            apikey : "",
-            dialpad: true,
-            togglemic: true,
-            slideopen: true,
-            buttontext: "loading call button...",
-            buttontextready: "Call me",
-            numbertodial: "app:9991457008"
+            apikey:"",
+            dialpad:true,
+            togglemic:true,
+            slideopen:true,
+            buttontext:"loading call button...",
+            buttontextready:"Call me",
+            numbertodial:"app:9991457008"
         };
 
         if (options) {
             //lowercase all options passed in
-            $.each(options, function(k, v) {
+            $.each(options, function (k, v) {
                 callMeOptions[k.toLowerCase()] = v;
             });
         }
 
-        return this.each(function() {
+        return this.each(function () {
 
             if (options) {
                 $.extend(settings, callMeOptions);
@@ -33,19 +32,19 @@
 
             // event handlers
             phone.find(".phono-digit").bind({
-                mouseenter: function() {
+                mouseenter:function () {
                     $(this).addClass("ui-state-hover");
                 },
-                mouseleave: function() {
+                mouseleave:function () {
                     $(this).removeClass("ui-state-hover");
                 },
-                mousedown: function() {
+                mousedown:function () {
                     $(this).addClass("ui-state-active");
                 },
-                mouseup: function() {
+                mouseup:function () {
                     $(this).removeClass("ui-state-active");
                 },
-                click: function(e) {
+                click:function (e) {
                     if (call)
                         call.digit($(this).attr("title"));
                     e.preventDefault();
@@ -53,17 +52,17 @@
             });
 
             phone.find(".phono-mic-toggle").bind({
-                click: function() {
+                click:function () {
                     (this.checked) ? phono.phone.headset(true) : phono.phone.headset(false);
                 }
             });
 
             dispatcher.bind({
                 // phono is ready, bind events to the call button
-                phonoReady: function() {
+                phonoReady:function () {
                     var btn = phone.find("a.phono-phone-button");
                     btn.bind({
-                        click: function(e) {
+                        click:function (e) {
                             (call) ? hangUpCall(settings, phone) : makeCall(settings, phone);
                             e.preventDefault();
                         }
@@ -75,12 +74,12 @@
 
             // initialize phono
             phono = $.phono({
-                apiKey: settings.apikey,
-                onReady: function() {
+                apiKey:settings.apikey,
+                onReady:function () {
                     dispatcher.trigger("phonoReady");
                 },
-                phone: {
-                    onDisconnect: function(event) {
+                phone:{
+                    onDisconnect:function (event) {
                         hangUpCall(settings, phone);
                     }
                 }
@@ -135,7 +134,7 @@
                 var digitTbl = $("<table/>")
                     .addClass("phono-digits-tbl")
                     .css({
-                        "width": "100%"
+                        "width":"100%"
                     })
                     .appendTo(digitTblHldr);
 
@@ -157,7 +156,7 @@
                 var tblRows = $("<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>")
                     .appendTo(digitTbl);
 
-                $.each(tblRows.find("td"), function(i, el) {
+                $.each(tblRows.find("td"), function (i, el) {
                     var digitObj = digits[i];
                     $(el).css({
                         "padding":"1px",
@@ -201,14 +200,27 @@
                 phone.find(".phono-digit-hldr").slideDown();
 
             call = phono.phone.dial(settings.numbertodial, {
-                tones: true,
-                onAnswer: function(event) {
+
+                headers:[
+                    {
+                        name:"x-foo",
+                        value:"bar"
+                    },
+                    {
+                        name:"x-name",
+                        value:"homer"
+                    }
+                ],
+
+
+                tones:true,
+                onAnswer:function (event) {
                     phoneBtn.text("Hangup");
                 },
-                onHangup: function() {
+                onHangup:function () {
                     hangUpCall(settings, phone);
                 },
-                onDisconnect: function() {
+                onDisconnect:function () {
                     hangUpCall(settings, phone);
                 }
             });
