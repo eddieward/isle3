@@ -1,0 +1,31 @@
+<div id="contact-panels">
+
+  <div id="contact-info">
+    <p>Ed Ward</p>
+    <br/>
+    <br/>
+
+    <p><a href="mailto:eddie@isle3.com">edward@isle3.com</a></p>
+    <br/>
+    <br/>
+
+
+  </div>
+  <div id="phono-call">
+    <br/>
+    <script type="text/javascript">
+        $("#phono-call").append(
+                $("<div/>")
+                        .css("width", "210px")
+                        .callme({
+                            apiKey:"b0c2ba115ea85617239cc64c38983859",
+                            numberToDial:"app:9996146110",
+                            buttonTextReady:"Click Here to Call Me",
+                            slideOpen:true
+                        })
+        )
+    </script>
+    <p>&nbsp;&nbsp;or call (415) 766-9404 </p>
+    <br/>
+  </div>
+</div>

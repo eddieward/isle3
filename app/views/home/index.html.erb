@@ -1,0 +1,75 @@
+<div id="map_canvas"></div>
+
+<div id="pano"></div>
+
+<div id="map-bottom"></div>
+
+<div id="lower-panels">
+  <div id="eddie-ward"><em>Eddie Ward<br/><br/>Software and Web Developer<br/><br/>Specializing in Google Maps and
+    <span id="ruby">Ruby Web Frameworks</span>
+    <br/><br/> <br/>
+    <a href="/contact">Contact Me</a></em>
+  </div>
+
+  <div id="points-of-interest">
+
+    <div id="vertical-pano-button">
+      <a href="#" onmouseout="MM_swapImgRestore(); hidePanorama();" onmouseover="MM_swapImage('pan','','/images/panorama_hover.png',1); showPanorama();"><img src="/images/panorama.png" name="pan" width="30" height="170" border="0" id="pan"/></a>
+    </div>
+
+
+    <div id="pano-button"><a href="#" onclick="showPano(); return false;"><h3>Panoramic View</h3></a></div>
+
+    <ul id="locations">
+
+      <li data-geo-lat="37.7701841891038" data-geo-long="-122.48190816802979">
+        <h3>Golden Gate Park</h3>
+
+        <p class="longdesc"><strong></strong>Golden Gate Park is truly a treasure in a beautiful city filled with
+          treasures.</p>
+      </li>
+
+      <li data-geo-lat="37.770455576265704" data-geo-long="-122.46731695098877">
+        <h3>Museums</h3>
+
+        <p class="longdesc"><strong></strong>The M.H. de Young Museum & The California Academy of Sciences & The Music
+          Concourse Bandshell.</p>
+      </li>
+
+      <li data-geo-lat="37.7691325544436" data-geo-long="-122.45358404083252">
+        <h3>Haight Street</h3>
+
+        <p class="longdesc"><strong></strong>Haight Street ends where the park begins. The Whole Foods Store is now
+          open.</p>
+      </li>
+
+      <li data-geo-lat="37.768861162426056" data-geo-long="-122.47268136901856">
+        <h3>Stow Lake</h3>
+
+        <p class="longdesc"><strong></strong> Stow Lake is a great place to rent a rowboat. ...and float merrily,
+          merrily, merrily, merrily...</p>
+      </li>
+
+      <li data-geo-lat="37.7691793794934" data-geo-long="-122.49806951904294">
+        <h3>Bison Paddock</h3>
+
+        <p class="longdesc"><strong></strong>The bison are very majestic creatures. They were way in the back of the
+          paddock when Google ambled by.</p>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <div id="more-info">
+    <div>
+
+      <h2>More Info</h2>
+
+      <p>Hover over location on the left. (JavaScript must be enabled)</p>
+
+    </div>
+  </div>
+
+</div>
+
